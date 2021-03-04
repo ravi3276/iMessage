@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './Chat.css'
 import IconButton from '@material-ui/core/IconButton';
 import MicNoneIcon from '@material-ui/icons/MicNone';
 function Chat() {
+        const [input,setInput]=useState('');
+    const sendMessage=(e)=>{
+        console.log("object");
+        e.preventDefault();
+    }
+    console.log(input);
+
     return (
         <div className="chat">
             <div className="chat__header">
@@ -23,8 +30,11 @@ function Chat() {
 
             <div className="chat__footer">
             <form className="chat__form">
-            <input type="text" placeholder="i Message"/>
-            <button>send</button>
+            <input
+            value={input}
+            onChange={e=>setInput(e.target.value)}
+            type="text" placeholder="i Message"/>
+            <button onClick={sendMessage}>send</button>
             </form>
             <IconButton>
             <MicNoneIcon />
